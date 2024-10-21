@@ -14,10 +14,12 @@ const User = ({
         <div>
             <img src={avatar_url} alt={login} />
             <h2>{login}</h2>
-            <p>
-                <MdLocationPin />
-                <span>{location}</span>
-            </p>
+            {location && (
+                <p>
+                    <MdLocationPin />
+                    {location}
+                </p>
+            )}
             <div>
                 <p>Seguidores:</p>
                 <p>{followers}</p>
@@ -26,7 +28,7 @@ const User = ({
                 <p>Seguindo:</p>
                 <p>{following}</p>
             </div>
-            <Link to={`/${login}`}>Ver melhores repositórios do usuário</Link>
+            <Link to={`/${login}`}>Ver melhores projetos...</Link>
         </div>
     );
 };

@@ -19,7 +19,13 @@ const Repos = () => {
                 `https://api.github.com/users/${username}/repos`
             );
             const data = await response.json();
-            setRepos(data);
+
+            const oderedData = data.sort((a: RepoProps, b: RepoProps) => {
+                return b.stargazers_count - a.stargazers_count;
+            });
+            const filterRepos = oderedData.slice(0, 5);
+
+            setRepos(filterRepos);
             setLoading(false);
         };
         loadRepos();
